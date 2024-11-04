@@ -51,11 +51,20 @@ public class FoodOrderingSystem extends JFrame {
 
                 JRadioButton arr[] = {rb0, rb5, rb10, rb15};
 
+                int ind = 0;
                 for (JRadioButton rb : arr) {
                     if (rb.isSelected()) {
-
+                        switch (ind) {
+                            case 1 -> total -= total * 0.05;
+                            case 2 -> total -= total * 0.1;
+                            case 3 -> total -= total * 0.15;
+                        }
+                        break;
                     }
+                    ind++;
                 }
+
+                JOptionPane.showMessageDialog(null, String.format("The total price is Php %.2f", total));
             }
         });
     }
@@ -64,7 +73,7 @@ public class FoodOrderingSystem extends JFrame {
         FoodOrderingSystem s = new FoodOrderingSystem();
         s.setContentPane(s.pName);
         s.setSize(600, 300);
-        s.setTitle("Simple Calculator");
+        s.setTitle("Food Ordering System");
         s.setDefaultCloseOperation(EXIT_ON_CLOSE);
         s.setVisible(true);
     }
